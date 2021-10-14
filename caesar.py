@@ -1,11 +1,16 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 def caesar_cipher(message, shift):
     """
     this caesar cipher function encrypts a string using a shift value, 
     substituting each letter with a letter found by moving n places down 
     the alphabet 
     Args:
-        message(string): a phrase or sentence, can contain whitespaces & punctuation, assumed all lowercase
+        message(str): a phrase or sentence, can contain whitespaces & punctuation, assumed all lowercase
         shift(int): an int used to shift the message
+    Returns:
+        translation(str): the message after the substitution cipher
     """
     translation = ""
     for letter in message:
