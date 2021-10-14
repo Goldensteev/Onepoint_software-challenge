@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import os
 import re
+import sys
 from dateutil.parser import *
 
 def gettime(line):
@@ -39,4 +40,5 @@ def logparse(file_):
         report += "Device ran for: " + str(difference) + '\n' + errorlogs
     return report
 
-print(logparse("C:\\Users\\fletc\\codespace\\Onepoint_software-challenge\\logfile.log"))
+if __name__ == '__main__':
+    print(logparse(sys.argv[-1]))
