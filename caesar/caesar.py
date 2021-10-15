@@ -20,3 +20,6 @@ def caesar_cipher(message, shift):
         else:
             translation+=letter
     return translation
+
+if __name__ == '__main__':
+    print(caesar_cipher("this is a test!!! it works!? zoinks", 1))
