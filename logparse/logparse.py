@@ -33,11 +33,11 @@ def logparse(file_):
                     starttime_ = gettime(line)
                 elif re.findall(r'ERR', line):
                     time_ = gettime(line)
-                    errorlogs += "Error logged on " + time_.strftime("%Y/%m/%d %I:%M:%S") + '\n'
+                    errorlogs += "ERR condition logged on " + time_.strftime("%Y/%m/%d %I:%M:%S") + '\n'
                 elif re.findall(r'OFF', line):
                     endtime_ = gettime(line)
         difference = endtime_ - starttime_
-        report += "Device ran for: " + str(difference) + '\n' + errorlogs
+        report += "Device was ON for " + str(difference) + '\n' + errorlogs
     return report
 
 if __name__ == '__main__':
