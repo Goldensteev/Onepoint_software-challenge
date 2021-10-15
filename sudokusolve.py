@@ -2,19 +2,48 @@
 # -*- coding: utf-8 -*-
 import sys
 
-sudoku = list("004006079000000602056092300078061030509000406020540890007410920105000000840600100")
-unsovable = list("020400080000000006800007100200500090095000000040030000000041007002800040000060300")
-
-def same_row(i,j): 
+def same_row(i,j):
+    """
+    function returns True if cell i and cell j are on the same row
+    Args:
+        i(int): index of the cell (SDM string format)
+        j(int): index of the cell (SDM string format)
+    Returns:
+        bool: True is same row, False if not
+    """ 
     return (i//9 == j//9)
 
-def same_col(i,j): 
+def same_col(i,j):
+    """
+    function returns True if cell i and cell j are on the same col
+    Args:
+        i(int): index of the cell (SDM string format)
+        j(int): index of the cell (SDM string format)
+    Returns:
+        bool: True is same col, False if not
+    """ 
     return (i-j) % 9 == 0
 
-def same_block(i,j): 
+def same_block(i,j):
+    """
+    function returns True if cell i and cell j are in the same block or region
+    Args:
+        i(int): index of the cell (SDM string format)
+        j(int): index of the cell (SDM string format)
+    Returns:
+        bool: True is same col, False if not
+    """
     return (i//27 == j//27 and i%9//3 == j%9//3)
 
 def solve(sudoku):
+    """
+    function solves the sudoku puzzle recursivly going through the cells filling in the only possible remaing
+    solution for each cell.
+    Args:
+        sudoku(list): a list of str digits of length 81, each digit between 0 and 9 
+    Returns:
+        sudoku(str): a string in a SDM format
+    """
     for i, ivalue in enumerate(sudoku):
         impossibles = set()
         if ivalue == '0':
@@ -29,8 +58,9 @@ def solve(sudoku):
     if ''.join(sudoku).find('0') != -1:
         solve(sudoku)
     else:
-        print("Solution:\n{} ".format(''.join(sudoku)))
-        return ''.join(sudoku)
+        sudoku = ''.join(sudoku)
+        print("Solution:\n{} ".format(sudoku))
+        return sudoku
 
 if __name__ == '__main__':
     if len(sys.argv) == 2 and len(sys.argv[1]) == 81:
