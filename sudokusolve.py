@@ -57,6 +57,8 @@ def solve(sudoku):
                         sudoku[i] = m
     if ''.join(sudoku).find('0') != -1:
         solve(sudoku)
+        sudoku = ''.join(sudoku)
+        return sudoku
     else:
         sudoku = ''.join(sudoku)
         print("Solution:\n{} ".format(sudoku))
