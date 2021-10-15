@@ -1,0 +1,12 @@
+import pytest
+from sudokusolve import *
+
+def test_correct_solution():
+    sudoku = list("004006079000000602056092300078061030509000406020540890007410920105000000840600100")
+    sudoku = solve(sudoku)
+    assert sudoku == "284136579913754682756892341478961235539287416621543897367415928195328764842679153"
+
+def test_unsolvable_solution():
+    sudoku = list("020400080000000006800007100200500090095000000040030000000041007002800040000060300")
+    with pytest.raises(RecursionError) as re_info:
+        sudoku = solve(sudoku)
